@@ -1,17 +1,36 @@
+
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.MovieTable{
+  overflow-y: scroll;
+  height: 70vmin;
+  /*not working*/
+  scrollbar-color: green;
+  scrollbar-base-color: red;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+.App-logo {
+  height: 20vmin;
+  pointer-events: none;
+  margin: 0%, 0%;
+  display: block;
+  align-self: center;
+}
+
+/*not working*/
+body::-webkit-scrollbar-thumb {
+  background-color: blue;
+  outline: 1px solid red;
+}
+
+ 
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -20,7 +39,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(5px + 2vmin);
   color: white;
 }
 
@@ -28,11 +47,39 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+
+.active{
+  background-color: green;
+  border-radius: 25px;
+  width: 80%;
+  align-content: center;
+}
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+} */
+
+table {
+  border: 2px solid forestgreen;
+  width: calc( 40*2vw);
 }
+td {
+  display: inline-block;
+}
+input + :checked{
+  display: none;
+}
+
+img {
+  margin: auto;
+  display: block;
+}
+/* :checked + label {
+border: 1px solid rgba(81, 203, 238, 1);
+background-color: green;
+} */
+
