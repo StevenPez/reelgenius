@@ -20,6 +20,20 @@ const movieList = [
   {name: "Mamma Mia!", rating: 8,id: "14"},
   {name: "Tenet", rating: 9,id: "15"}
 ];
+
+const genres = [
+  {name: "Horror"},
+  {name: "Romance"},
+  {name: "Action"},
+  {name: "Comedy"},
+  {name: "Romance"},
+  {name: "Action"},
+  {name: "Comedy"},
+  {name: "Romance"},
+  {name: "Action"},
+  {name: "Comedy"}
+];
+
 function App() {
   const [searchValue, setSearchValue] = useState('');
   const [searchValue2, setSearchValue2] = useState('');
@@ -36,6 +50,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div class="navBar">
+          <a  href="#Recommendations">Recommendations</a>
+          <a id="activeNav" href="Preferences">Preferences</a>
+          <a href="#History">History</a>
+        </div>
+      </header>
+      <body className='App-body'>
         {/* <table>
           <td>
             <input type='checkbox' id='a'></input><label for='a'><div onClick={(e)=>e.target.classList.toggle('active')}><img src={logo} className="App-logo" alt="logo" /> <br/>Title: "test" <br/> Rating: 6</div></label>
@@ -43,6 +64,23 @@ function App() {
           e
         </table> */}
         
+        <h1>Genre</h1>
+        
+        <table id='myGenreTable'>
+          
+          <caption>Select a few of your favorites below<br></br></caption>
+          
+        <div className="GenreTable" style={{ userSelect: "none" }}>
+          {genres.map((val, key) => {
+            return (
+              <td key = {val.id} align='center'>
+                <div onClick={(e)=>e.target.classList.toggle('activeGenre')} className='genre'>
+                {val.name}</div></td>
+            )
+          })}
+          </div>
+        </table>
+        <br></br>
       
         <h1>Movies you love</h1>
         
@@ -59,7 +97,7 @@ function App() {
           }).map((val, key) => {
             return (
               <td key = {val.id} align='center'>
-                <div onClick={(e)=>e.target.classList.toggle('active')} >
+                <div onClick={(e)=>e.target.classList.toggle('activeMovie')} >
                   <img src={logo} className="App-logo" alt="logo" align='center'/><br/>
                   Title: {val.name}<br/>
                   Rating: {val.rating}</div></td>
@@ -86,7 +124,7 @@ function App() {
           }).map((val, key) => {
             return (
               <td key = {val.id} align='center'>
-                <div onClick={(e)=>e.target.classList.toggle('active')}>
+                <div onClick={(e)=>e.target.classList.toggle('activeMovie')}>
                   <img src={logo} className="App-logo" alt="logo" /><br/>
                   Title: {val.name}<br/>
                   Rating: {val.rating}</div></td>
@@ -95,22 +133,9 @@ function App() {
           </div>
         </table>
         <br></br>
-      </header>
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
+        </body>
     </div>
+    
   );
 }
 
