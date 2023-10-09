@@ -5,7 +5,8 @@
 
 .navBar{
   background-color: forestgreen;
-  overflow: hidden;
+  min-height: 5vmin;
+  height: fit-content;
 }
 .navBar a {
   float: left;
@@ -13,8 +14,10 @@
   color: white;
   text-align: center;
   text-decoration: none;
-  padding: 1vh 0vw;
-  width: 200px;
+  font-size: 2vmin;
+  height: 3vmin;
+  padding: 1vmin 0vw;
+  width: 17vmin;
 }
 .navBar a:hover {
   background-color: #474d58;
@@ -82,7 +85,25 @@ body::-webkit-scrollbar-thumb {
   font-size: calc(5px + 2vmin);
   color: white;
 }
-
+.History-body {
+  background-color: #282c34;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  font-size: calc(5px + 2vmin);
+  color: white;
+}
+.LandingPageText{
+  border: 2px solid forestgreen;
+  width: calc( 40*2vw);
+  text-align: left;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  padding-left: 30px;
+}
 
 .activeMovie{
   background-color: green;
