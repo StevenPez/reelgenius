@@ -21,6 +21,9 @@ function App() {
     case "/History":
       Page = HistoryPage
       break
+    default:
+      Page = LandingPage
+      break
   }
   return(
     <Page></Page>
