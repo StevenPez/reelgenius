@@ -7,16 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1OB-cT058S6NuDy9xY9-BpCCPMW6Q1om3
 """
 
-from tensorflow.keras import layers
-from tensorflow import keras
-import tensorflow as tf
-
-from sklearn.model_selection import train_test_split
-from ast import literal_eval
-
-import pandas as pd
-import numpy as np
-
 df = pd.read_csv('rt_imdb.csv')
 
 print(df.head())

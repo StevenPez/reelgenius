@@ -28,7 +28,7 @@ export default function LandingPage(){
             this coming December 2023. Reel Genius is our "Senior Project", a
             semester long project created and commpleted solely by our team,
             under the guidance of our advisor, Dr. Üngör, and our Senior Project
-            coordinator, Dr. Thomas
+            coordinator, Dr. Thomas.
             </div>
             </div>
             <div className='LandingPageLeftAlign'>

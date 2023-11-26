@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Pref from './pages/Pref';
 import HistoryPage from './pages/History';
@@ -6,27 +6,19 @@ import RecommendationsPage from './pages/Recommendations';
 import LandingPage from './pages/LandingPage';
 
 function App() {
+  const[recommendations, setRecommendations] = useState([])
+  console.log(recommendations)
+
   //selects page based on link
-  let Page
-  switch(window.location.pathname) {
-    case "/":
-      Page = LandingPage
-      break
-    case "/Recommendations":
-      Page = RecommendationsPage
-      break
-    case "/Preferences":
-      Page = Pref
-      break
-    case "/History":
-      Page = HistoryPage
-      break
-    default:
-      Page = LandingPage
-      break
-  }
+  let link = window.location.pathname
+
   return(
-    <Page></Page>
+    <div> 
+      {link === '/' ? <LandingPage/> :
+      (link === '/Recommendations' ? <RecommendationsPage recs = {recommendations}/> :
+      (link === '/Preferences' ? <Pref setRecs = {setRecommendations} /> :
+      (link === '/History' ? <HistoryPage/> : <LandingPage/>)))}
+    </div>
   );
 }
 

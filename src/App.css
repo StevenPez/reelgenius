@@ -200,10 +200,10 @@ body::-webkit-scrollbar-thumb {
 .genre {
   outline: solid .1vmin;
   top: 50%;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
-  padding-left: 5vh;
-  padding-right: 5vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-left: 1vh;
+  padding-right: 1vh;
   transform: translate(0, -50%); 
   border-radius: 1vmin;
   align-content: center;
@@ -211,18 +211,42 @@ body::-webkit-scrollbar-thumb {
 
 .SubscriptionTable{
   overflow-y: hidden;
-  height: 40vmin;
+  height: 25vmin;
 } 
 
 .subscription {
   display: table-cell;
-  width: 6vw;
-  height: 6vw;
+  width: 75px;
+  height: 75px;
   outline: solid .1vmin;
   align-items: center;
   vertical-align: middle;
   font-size: 3vmin;
+  padding-top: .5vh;
+  padding-bottom: .5vh;
+  padding-left: .5vw;
+  padding-right: .5vw;
+  border-radius: 1vmin;
+
 }
+
+/* generate recommendations button */
+.generateRec > button {
+  background: var(--highlight);
+  color: black;
+  border-radius: 1vmin;
+  font-size: calc(8px + 2vmin);
+  padding-top: .5vh;
+  padding-bottom: .5vh;
+  padding-left: .5vw;
+  padding-right: .5vw;
+}
+
+.generateRec > button:active{
+  background:#91b4bb;
+  
+}
+
 /* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -233,7 +257,6 @@ body::-webkit-scrollbar-thumb {
 } */
 .movieContainer{
   width: 100%;
-  flex:1;
   padding-right: 2.5%;
   padding-left: 2.5%;
   padding-top: 5%;
@@ -242,6 +265,7 @@ body::-webkit-scrollbar-thumb {
   margin-right: .5vw;
   margin-left: .5vw;
 }
+
 .flexContainer {
   margin: auto;
   display: flex;
@@ -290,21 +314,30 @@ body::-webkit-scrollbar-thumb {
   background: #91b4bb;
 }
 .mySubscriptionTable2{
-  width: 30vw;
+  width: 60vw;
   height: 6vw;
   vertical-align: middle;
   border: 0vmin solid var(--highlight);
 }
 #mySubscriptionTable td{
-  width: 6.5vw;
+  width: 100px;
   height: 5vw;
   vertical-align: middle;
+  padding: 5vh 1vw;
+  margin-top: 2vh;
+  margin-bottom: 2vh;
+  margin-left: .2vh;
+  margin-right: .2vh;
 }
 #myGenreTable td{
   width: 200px;
   height: 0vh;
   vertical-align: bottom;
   padding: 5vh .5vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  margin-left: .2vh;
+  margin-right: .2vh;
 }
 
 table {
@@ -322,6 +355,7 @@ input + :checked{
 img {
   margin: auto;
   display: block;
+  font-style: italic;
 }
 
 h3{
