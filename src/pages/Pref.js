@@ -67,14 +67,6 @@ export default function Pref(props){
       ];
     return (
         <div className="App">
-          <header className="App-header">
-            <div class="navBar">
-              <a href='/'>Reel Genius</a>
-              <a  href="/Recommendations">Recommendations</a>
-              <a id="activeNav" href="/Preferences">Preferences</a>
-              <a href="/History">History</a>
-            </div>
-          </header>
           <body className='App-body'>
             {/* <table>
               <td>

@@ -3,14 +3,7 @@ import logo from '../logo.svg';
 export default function LandingPage(){
     return (
         <div className="App">
-          <header className="App-header">
-            <div class="navBar">
-              <a id="activeNav" href='/'>Reel Genius</a>
-              <a  href="/Recommendations">Recommendations</a>
-              <a href="/Preferences">Preferences</a>
-              <a href="/History">History</a>
-            </div>
-          </header>
+
           <body className='Landing-body'>
             <div className='LandingPageLeftAlign'>
               

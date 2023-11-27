@@ -32,14 +32,7 @@ export default function RecommendationsPage(props){
 
     return (
         <div className="App" style={{overflow: 'none'}}>
-          <header className="App-header">
-            <div class="navBar">
-              <a href='/'>Reel Genius</a>
-              <a id="activeNav" href="/Recommendations">Recommendations</a>
-              <a href="/Preferences">Preferences</a>
-              <a href="/History">History</a>
-            </div>
-          </header>
+
           <body className='History-body'>
             
             <h5>Recommendations</h5>

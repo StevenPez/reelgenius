@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from './Header';
 import Pref from './pages/Pref';
 import HistoryPage from './pages/History';
 import RecommendationsPage from './pages/Recommendations';
@@ -13,12 +15,17 @@ function App() {
   let link = window.location.pathname
 
   return(
-    <div> 
-      {link === '/' ? <LandingPage/> :
-      (link === '/Recommendations' ? <RecommendationsPage recs = {recommendations}/> :
-      (link === '/Preferences' ? <Pref setRecs = {setRecommendations} /> :
-      (link === '/History' ? <HistoryPage/> : <LandingPage/>)))}
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Header activeView={link}/>}>
+          <Route index element={<LandingPage />} />
+          <Route path="Recommendations" element={<RecommendationsPage recs = {recommendations}/>} />
+          <Route path="Preferences" element={<Pref setRecs = {setRecommendations} />} />
+          <Route path="History" element={<HistoryPage/>} />
+          <Route path="*" element={<LandingPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

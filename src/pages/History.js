@@ -17,14 +17,6 @@ export default function HistoryPage(){
        
     return (
         <div className="App" style={{overflow: 'none'}}>
-          <header className="App-header">
-            <div class="navBar">
-              <a href='/'>Reel Genius</a>
-              <a  href="/Recommendations">Recommendations</a>
-              <a href="/Preferences">Preferences</a>
-              <a id="activeNav" href="/History">History</a>
-            </div>
-          </header>
           <body className='History-body'>
             
             <h1>History</h1>
