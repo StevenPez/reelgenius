@@ -1,5 +1,5 @@
-def get_recommendation(movie_title, num_recs, streaming_platforms):
-
+def get_recommendation_based_on_title(movie_title, num_recs, streaming_platforms):
+    
 
     from tensorflow.keras import layers
     from tensorflow import keras
@@ -127,7 +127,7 @@ def get_recommendation(movie_title, num_recs, streaming_platforms):
     from sklearn.metrics.pairwise import cosine_similarity
 
     # Select the feature vector columns
-    parameters = ['genre_vectors', 'actors_vectorized','directors_vectorized','info_vectors']
+    parameters = ['genre_vectors', 'actors_vectorized','directors_vectorized','info_vectors', ]
     # initialize similarities
     df['similarities'] = np.zeros(len(df))
     # Compute cosine similarity for each feature vector column
@@ -136,6 +136,9 @@ def get_recommendation(movie_title, num_recs, streaming_platforms):
         similarity_matrix = cosine_similarity(params)  # Compute matrix of cosine similarity vals 
        
         df['similarities'] += np.sum(similarity_matrix[:, 1:], axis=1)  # Exclude similarity score with itself
+    max_sim = df['similarities'].max()
+    min_sim = df['similarities'].min()
+    df['similarities'] = (df['similarities'] - min_sim) / (max_sim - min_sim)
 
    
     def get_movie_recommendations(movie_title, num_recommendations, streaming_platforms):
@@ -144,15 +147,18 @@ def get_recommendation(movie_title, num_recs, streaming_platforms):
 
 
         similarity_values = df['similarities'].values
-
+        
         # Get the similarity value of the input movie
         input_similarity_value = similarity_values[input_ind]
 
         # Calculate the absolute difference between the similarity values and the input similarity value
         similarity_diff = np.abs(similarity_values - input_similarity_value)
+        #(df['similarity'] - min_similarity) / (max_similarity - min_similarity)
+
 
         # Sort the indices based on the similarity difference in ascending order
         sorted_indices = np.argsort(similarity_diff)
+
 
 
         filtered_indices = np.zeros(num_recommendations)
@@ -170,11 +176,69 @@ def get_recommendation(movie_title, num_recs, streaming_platforms):
              
 
         #Return recommendations
-        recommended_df = df.loc[filtered_indices, 'movie_title']
+        recommended_df = df.loc[filtered_indices, 'movie_title'].values
+        sims = []
+        for i in sorted_indices[:num_recommendations]:
+            sims.append(similarity_diff[i])
 
-        return recommended_df
 
-    recommended_movies = get_movie_recommendations(movie_title, num_recs, streaming_platforms)
+
+        return recommended_df, sims
+
+    recommended_movies, similarities = get_movie_recommendations(movie_title, num_recs, streaming_platforms)
     print(recommended_movies)
-    return recommended_movies
-get_recommendation('The Music Man', 5, ['HBO Max', 'Hulu'])
+    return recommended_movies, similarities
+
+def get_recommendations_multiple_titles(movies, num_recs, streaming_platforms):
+    filtered_movies = []
+    for movie in movies:
+        if movies.count(movie) % 2 != 0:
+            filtered_movies.append(movie)
+    movies = filtered_movies
+
+    movie_recs = []
+    similarities = []
+    for movie in movies:
+        movie_rec, sim = get_recommendation_based_on_title(movie, num_recs, streaming_platforms)
+        for i in range(len(movie_rec)):
+            movie_recs.append(movie_rec[i])
+            similarities.append(sim[i])
+    
+    movie_counts = {}
+
+    for i in range(len(movie_recs)):
+        if movie_recs[i] in movie_counts.keys():
+            movie_counts[movie_recs[i]] = movie_counts[movie_recs[i]] + similarities[i]
+    
+        else:
+            movie_counts[movie_recs[i]] = similarities[i]
+    
+    final_recs = []
+    for i in range(num_recs):
+        min_sim= min(movie_counts, key=movie_counts.get)
+        final_recs.append(min_sim)
+        del movie_counts[min_sim]
+
+
+    print(final_recs)
+    return(final_recs)
+
+def get_recommendation_genre(genre, num_recs, streaming_platform, crit_weight):
+    import pandas as pd
+
+    df = pd.read_csv('MERGE_WITH_STREAMING.csv')
+    df['weighted_rating'] = ((df['tomatometer_rating'] + df['IMDB_rating'] / 2) * crit_weight) + (df['twit_mean_rating'] * (1-crit_weight))
+
+    for i in range(len(df)):
+        if genre not in df['genres'][i]:
+            if len(list(set(streaming_platform) & set(df['streaming'][i]))) == 0:
+                df.drop([i])
+        
+    df.sort_values(by=['weighted_rating'])
+
+    return(df['movie_title'].values[:num_recs])
+
+
+get_recommendation_based_on_title('The Music Man', 5, ['HBO Max', 'Hulu'])
+get_recommendations_multiple_titles(['The Music Man', '17 Again'], 5, ['HBO Max', 'Hulu'])
+print(get_recommendation_genre("Romance", 5, ['HBO Max', 'Hulu'], 0.3))
