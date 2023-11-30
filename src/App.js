@@ -10,6 +10,7 @@ import LandingPage from './pages/LandingPage';
 function App() {
   const[recommendations, setRecommendations] = useState([])
   console.log(recommendations)
+  const totalPref = []
 
   //selects page based on link
   let link = window.location.pathname
@@ -20,7 +21,7 @@ function App() {
         <Route path="/" element={<Header activeView={link}/>}>
           <Route index element={<LandingPage />} />
           <Route path="Recommendations" element={<RecommendationsPage recs = {recommendations}/>} />
-          <Route path="Preferences" element={<Pref setRecs = {setRecommendations} />} />
+          <Route path="Preferences" element={<Pref setRecs = {setRecommendations} totalPref = {totalPref} />} />
           <Route path="History" element={<HistoryPage/>} />
           <Route path="*" element={<LandingPage />} />
         </Route>

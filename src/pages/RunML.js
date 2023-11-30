@@ -6,7 +6,7 @@ function RunML(props) {
 
   const callAPI = () => {
     alert("Head to the Recommendations tab!")
-    fetch('http://192.168.1.240:5000/post_json', {
+    fetch('http://192.168.19.1:5000/post_json', {
       'method':'POST',
       headers: {
         'Access-Control-Allow-Origin': '*',

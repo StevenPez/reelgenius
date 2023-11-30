@@ -49,8 +49,7 @@ export default function RecommendationsPage(props){
                   <td key = {val.id} align='center'>
                     <div className='movieContainer'>
                       <img src={val.img} className="App-logo" alt= {val.name} align='center'/>
-                      {val.name}<br/>
-                      Similarity Score: {val.rating}</div></td>
+                      {val.name}</div></td>
                 )
               })}
               </div>
