@@ -22,6 +22,7 @@ export default function Pref(props){
     props.totalPref.push(['rate', x]);
   }
   
+  //Search values for searching tables by name
   const [searchValue, setSearchValue] = useState('');
   const [searchValue2, setSearchValue2] = useState('');
 
@@ -73,12 +74,7 @@ export default function Pref(props){
     return (
         <div className="App">
           <body className='App-body'>
-            {/* <table>
-              <td>
-                <input type='checkbox' id='a'></input><label for='a'><div onClick={(e)=>e.target.classList.toggle('active')}><img src={logo} className="App-logo" alt="logo" /> <br/>Title: "test" <br/> Rating: 6</div></label>
-              </td>
-              esa
-            </table> */}
+            {}
             
             <h3>Genre</h3>
             
