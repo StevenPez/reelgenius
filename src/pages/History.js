@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../logo.svg';
-export default function HistoryPage(){
+
+export default function HistoryPage(props){
     const [searchValue, setSearchValue] = useState('');
     const [searchValue2, setSearchValue2] = useState('');
   
