@@ -21,12 +21,10 @@ export default function RecommendationsPage(props){
 
     const movieList = [];
 
-    console.log(recs)
-
     const count = recs.length;
     
     for (let i = 0; i < count; i++) {
-      movieList.push({name: recs[i][0], rating: recs[i][1], id: i, img: recs[i][2]});
+      movieList.push({name: recs[i][0], id: i, img: recs[i][2]});
     }
 
 

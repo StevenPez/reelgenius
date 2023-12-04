@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import logo from '../logo.svg';
-export default function HistoryPage(){
+
+export default function HistoryPage(props){
     const [searchValue, setSearchValue] = useState('');
     const [searchValue2, setSearchValue2] = useState('');
   
+    const history = props.historicalPref
+    console.log(history)
+
     const onChange = (event) => {
       setSearchValue(event.target.value);
     };
@@ -14,6 +18,13 @@ export default function HistoryPage(){
     const onSearch = (searchTerm) => {
     };
     const movieList = []
+
+    const count = history.length;
+    
+    for (let i = 0; i < count; i++) {
+      movieList.push({name: history[i][0], id: i, img: history[i][2]});
+    }
+
        
     return (
         <div className="App" style={{overflow: 'none'}}>
@@ -33,8 +44,7 @@ export default function HistoryPage(){
                   <td key = {val.id} align='center'>
                     <div className='movieContainer'>
                       <img src={val.img} className="App-logo" alt="" align='center'/>
-                      {val.name}<br/>
-                      Rating: {val.rating}</div></td>
+                      {val.name} </div></td>
                 )
               })}
               </div>

@@ -9,10 +9,10 @@ function Header(props) {
             <Link to="/">Home</Link>
           </>
           <>
-            <Link to="/Recommendations">Recommendations</Link>
+            <Link to="/Preferences">Preferences</Link>
           </>
           <>
-            <Link to="/Preferences">Preferences</Link>
+            <Link to="/Recommendations">Recommendations</Link>
           </>
           <>
             <Link to="/History">History</Link>

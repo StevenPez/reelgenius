@@ -76,8 +76,7 @@ def machineLearning(userPrefs):
             subs.append(userPrefs[i][1])
         if(userPrefs[i][0] == 'rate'):
             rate = 1 - userPrefs[i][1]
-
-    print("here")
+            
     print(userPrefs)
 
     # call the appropriate algorithm

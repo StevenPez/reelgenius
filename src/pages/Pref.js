@@ -39,7 +39,7 @@ export default function Pref(props){
   const count = Object.keys(jsonData.movie_title).length;
   
   for (let i = 0; i < count; i++) {
-    movieList.push({name: jsonData.movie_title[i], rating: 1, id: i, img: jsonData.Poster[i]});
+    movieList.push({name: jsonData.movie_title[i], id: i, img: jsonData.Poster[i]});
   }
 
       const genres = [
@@ -150,7 +150,7 @@ export default function Pref(props){
             </table>
 
             <div className="generateRec">
-              <RunML prefList={props.totalPref} setRecs = {props.setRecs} />
+              <RunML prefList={props.totalPref} setRecs = {props.setRecs} setHistory = {props.setHistory} historicalPref = {props.historicalPref}/>
             </div>
             
             <br></br>

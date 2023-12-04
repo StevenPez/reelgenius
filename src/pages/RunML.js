@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 
 function RunML(props) {
   const prefs = props.prefList;
+  const history = props.historicalPref
 
   const callAPI = () => {
     alert("Head to the Recommendations tab!")
@@ -19,7 +20,9 @@ function RunML(props) {
     })
     .then((response) => { return response.json() })
     .then((response) => { console.log(response.recs)
-      props.setRecs(response.recs) })
+      props.setRecs(response.recs) 
+      history.push(...response.recs)
+      props.setHistory(history) })
     .catch(error => console.log(error))
   }
   
